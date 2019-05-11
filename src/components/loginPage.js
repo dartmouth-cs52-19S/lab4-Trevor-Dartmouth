@@ -81,10 +81,10 @@ class LoginPage extends Component {
         <h2>Login</h2>
         <TextField
           id="standard-uncontrolled"
-          label="Username"
+          label="Email"
           className={classes.textField}
-          onChange={this.onUsernameChange}
-          value={this.state.username}
+          onChange={this.onEmailChange}
+          value={this.state.email}
           margin="normal"
         />
         <TextField

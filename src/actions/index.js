@@ -86,7 +86,7 @@ export function signoutUser(history) {
   return (dispatch) => {
     localStorage.removeItem('token');
     dispatch({ type: ActionTypes.DEAUTH_USER });
-    // history.push('/');
+    history.push('/');
   };
 }
 
@@ -99,9 +99,9 @@ export function authError(error) {
   };
 }
 
-export function signinUser({ username, password }, history) {
+export function signinUser({ email, password }, history) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/signin`, { username, password })
+    axios.post(`${ROOT_URL}/signin`, { email, password })
       .then((response) => {
         dispatch({ type: ActionTypes.AUTH_USER });
         localStorage.setItem('token', response.data.token);

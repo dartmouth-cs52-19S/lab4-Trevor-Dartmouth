@@ -161,6 +161,22 @@ class Post extends Component {
     setTimeout(() => { this.setState({ isEditing: false }); }, 200);
   }
 
+  renderViewButtons = () => {
+    if (this.props.authenticated) {
+      return (
+        <CardActions style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <Button size="small" color="primary" onClick={this.onDelete}>
+            Delete
+          </Button>
+          <Button size="small" color="primary" onClick={this.onEdit}>
+            Edit
+          </Button>
+        </CardActions>
+      );
+    }
+    return <div />;
+  }
+
   renderPost(classes) {
     if (this.state.isEditing) {
       return (
@@ -287,14 +303,7 @@ class Post extends Component {
               tags: {this.props.post.tags}
             </Typography>
           </CardContent>
-          <CardActions style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <Button size="small" color="primary" onClick={this.onDelete}>
-              Delete
-            </Button>
-            <Button size="small" color="primary" onClick={this.onEdit}>
-              Edit
-            </Button>
-          </CardActions>
+          {this.renderViewButtons()}
         </Card>
       );
     }
@@ -313,6 +322,7 @@ class Post extends Component {
 const mapStateToProps = state => (
   {
     post: state.posts.current,
+    authenticated: state.auth.authenticated,
   }
 );
 
