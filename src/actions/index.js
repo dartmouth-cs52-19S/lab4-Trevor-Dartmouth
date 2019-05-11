@@ -99,9 +99,9 @@ export function authError(error) {
   };
 }
 
-export function signinUser({ email, password }, history) {
+export function signinUser({ username, password }, history) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/signin`, { email, password })
+    axios.post(`${ROOT_URL}/signin`, { username, password })
       .then((response) => {
         dispatch({ type: ActionTypes.AUTH_USER });
         localStorage.setItem('token', response.data.token);

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import { signinUser, signupUser } from '../actions';
 
 /* Some UI Components adapted from Material UI */
@@ -59,12 +60,12 @@ class LoginPage extends Component {
 
   onSignUp = (event) => {
     event.preventDefault();
-    this.props.signinUser(this.state, this.props.history);
+    this.props.signupUser(this.state, this.props.history);
   }
 
   onSignIn = (event) => {
     event.preventDefault();
-    this.props.signupUser(this.state, this.props.history);
+    this.props.signinUser(this.state, this.props.history);
   }
 
   onSwitchContext = (event) => {
@@ -102,6 +103,9 @@ class LoginPage extends Component {
             Login
           </Button>
         </div>
+        <Typography className="login-error" component="p" style={{ color: 'red', textAlign: 'center' }}>
+          {this.props.error}
+        </Typography>
       </div>
     );
   }
@@ -141,6 +145,10 @@ class LoginPage extends Component {
             Sign Up
           </Button>
         </div>
+        <Typography className="login-error" component="p" style={{ color: 'red', textAlign: 'center' }}>
+          {this.props.error}
+        </Typography>
+
       </div>
     );
   }
@@ -164,4 +172,10 @@ class LoginPage extends Component {
   }
 }
 
-export default withStyles(styles)(withRouter(connect(null, { signinUser, signupUser })(LoginPage)));
+const mapStateToProps = state => (
+  {
+    error: state.auth.error,
+  }
+);
+
+export default withStyles(styles)(withRouter(connect(mapStateToProps, { signinUser, signupUser })(LoginPage)));

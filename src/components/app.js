@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -8,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import RequireAuth from './requireAuth';
 import Post from './post';
 import NewPost from './newPost';
 import HomePage from './homePage';
@@ -86,7 +88,7 @@ const App = (props) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/post/new" component={NewPost} />
+          <Route path="/post/new" component={RequireAuth(NewPost)} />
           <Route path="/posts/:postID" component={Post} />
           <Route path="/login" component={LoginPage} />
           <Route component={FallBack} />
