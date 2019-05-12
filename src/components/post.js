@@ -272,6 +272,9 @@ class Post extends Component {
                 value={this.state.post.cover_url}
               />
             </Typography>
+            <Typography component="p" style={{ fontStyle: 'italic', textAlign: 'right' }}>
+              author: {this.props.post.author}
+            </Typography>
           </CardContent>
 
           <CardActions style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
@@ -298,6 +301,9 @@ class Post extends Component {
             </Typography>
             <Typography component="h2">
               <p dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
+            </Typography>
+            <Typography component="p" style={{ fontStyle: 'italic', textAlign: 'right' }}>
+              author: {this.props.post.author}
             </Typography>
             <Typography component="p" style={{ fontStyle: 'italic', textAlign: 'right' }}>
               tags: {this.props.post.tags}

@@ -103,8 +103,9 @@ export function signinUser({ email, password }, history) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/signin`, { email, password })
       .then((response) => {
-        dispatch({ type: ActionTypes.AUTH_USER });
+        dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.username });
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', response.data.username);
         history.push('/');
       })
       .catch((error) => {
@@ -114,12 +115,13 @@ export function signinUser({ email, password }, history) {
 }
 
 
-export function signupUser({ email, password }, history) {
+export function signupUser({ email, password, username }, history) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/signup`, { email, password })
+    axios.post(`${ROOT_URL}/signup`, { email, password, username })
       .then((response) => {
-        dispatch({ type: ActionTypes.AUTH_USER });
-        localStorage.setItem('token', response.data.token);
+        dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.username });
+        localStorage.setItem('name', response.data.username);
+        localStorage.setItem('user', response.data.token);
         history.push('/');
       })
       .catch((error) => {

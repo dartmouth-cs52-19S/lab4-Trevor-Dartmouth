@@ -51,7 +51,10 @@ class HomePage extends Component {
             <Typography gutterBottom variant="h5" component="h2">
               {post.title}
             </Typography>
-            <Typography className="tags" component="p" style={{ fontStyle: 'italic', textAlign: 'right', marginBottom: '8%' }}>
+            <Typography component="p" style={{ fontStyle: 'italic', textAlign: 'right' }}>
+              author: {post.author}
+            </Typography>
+            <Typography className="tags" component="p" style={{ fontStyle: 'italic', textAlign: 'right', marginBottom: '10%' }}>
               tags: {post.tags}
             </Typography>
 

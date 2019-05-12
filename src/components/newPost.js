@@ -39,6 +39,7 @@ class NewPost extends Component {
       content: '',
       tags: '',
       cover_url: '',
+      author: this.props.currUser,
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -123,4 +124,10 @@ class NewPost extends Component {
   }
 }
 
-export default withStyles(styles)(withRouter(connect(null, { createPost })(NewPost)));
+const mapStateToProps = state => (
+  {
+    currUser: state.auth.user,
+  }
+);
+
+export default withStyles(styles)(withRouter(connect(mapStateToProps, { createPost })(NewPost)));
