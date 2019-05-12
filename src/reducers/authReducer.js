@@ -1,5 +1,6 @@
 import { ActionTypes } from '../actions';
 
+/* worked with John Sullivan */
 const AuthReducer = (state = {
   authenticated: false,
   user: null,

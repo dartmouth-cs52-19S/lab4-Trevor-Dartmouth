@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// const ROOT_URL = 'https://cs52-community-memes.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'https://cs52-community-memes.herokuapp.com/api';
 
 // keys for actiontypes
 export const ActionTypes = {
@@ -99,6 +98,7 @@ export function authError(error) {
   };
 }
 
+/* worked with John Sullivan */
 export function signinUser({ email, password }, history) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/signin`, { email, password })
@@ -114,7 +114,7 @@ export function signinUser({ email, password }, history) {
   };
 }
 
-
+/* worked with John Sullivan */
 export function signupUser({ email, password, username }, history) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/signup`, { email, password, username })
