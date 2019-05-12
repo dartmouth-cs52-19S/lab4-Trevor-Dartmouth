@@ -120,8 +120,8 @@ export function signupUser({ email, password, username }, history) {
     axios.post(`${ROOT_URL}/signup`, { email, password, username })
       .then((response) => {
         dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.username });
-        localStorage.setItem('name', response.data.username);
-        localStorage.setItem('user', response.data.token);
+        localStorage.setItem('user', response.data.username);
+        localStorage.setItem('token', response.data.token);
         history.push('/');
       })
       .catch((error) => {
